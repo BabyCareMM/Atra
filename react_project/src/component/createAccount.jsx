@@ -1,10 +1,11 @@
+import React from 'react'
 import {connect } from "react-redux";
 
-function CreateAccount(){
-
-  const mapStateToProps = (state) =>{
-    return {...state, user: state.userReducer.user || [] }
+const mapStateToProps = (state) =>{
+  return {...state, user: state.userReducer.user || [] }
 }
+
+function CreateAccount(){
 
     return (<>
         <div className="wrapper fadeInDown">
@@ -38,4 +39,4 @@ function CreateAccount(){
     export default connect(
       mapStateToProps,
       null
-  )(Items);
+  )(CreateAccount);
