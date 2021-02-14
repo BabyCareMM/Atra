@@ -1,7 +1,5 @@
-
-// <!------ Include the above in your HEAD tag ---------->
-
 export default function Login(){
+
 return (<>
     <div className="wrapper fadeInDown">
         <div id="formContent">
