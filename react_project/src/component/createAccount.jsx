@@ -1,4 +1,10 @@
-export default function CreateAccount(){
+import {connect } from "react-redux";
+
+function CreateAccount(){
+
+  const mapStateToProps = (state) =>{
+    return {...state, user: state.userReducer.user || [] }
+}
 
     return (<>
         <div className="wrapper fadeInDown">
@@ -19,12 +25,17 @@ export default function CreateAccount(){
             </form>
     
         {/* // <!-- Remind Passowrd --> */}
-        <div id="formFooter">
+        {/* <div id="formFooter">
           <a class="underlineHover" href="#">Forgot Password?</a>
-        </div>
+        </div> */}
     
       </div>
     </div> 
     </>)
     
     }
+
+    export default connect(
+      mapStateToProps,
+      null
+  )(Items);

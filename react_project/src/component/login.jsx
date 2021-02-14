@@ -1,4 +1,11 @@
-export default function Login(){
+import {connect } from "react-redux";
+
+
+  const mapStateToProps = (state) =>{
+    return {...state, user: state.userReducer.user || [] }
+}
+
+function Login(){
 
 return (<>
     <div className="wrapper fadeInDown">
@@ -27,3 +34,8 @@ return (<>
 </>)
 
 }
+
+export default connect(
+    mapStateToProps,
+    null
+)(Login);
