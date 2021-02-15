@@ -3,12 +3,12 @@ const user = require('../controllers/user')
 const posts = require('../controllers/posts')
 
 //user
-router.get('/login/:email/:password',user.login)
-router.post('/createAccount/',user.createAccount)
+router.get('/login/:email/:password', user.login)
+router.post('/createAccount/', user.createAccount)
 
 //posts
-router.get('/getUsersChosenPosts/:id',posts.getUsersChosenPosts)
-router.post('addChosenPost',posts.addChosenPost)
+router.get('/getUsersChosenPosts/:id', posts.getUsersChosenPosts)
+router.post('addChosenPost', posts.addChosenPost)
 
 module.exports = router;
 
