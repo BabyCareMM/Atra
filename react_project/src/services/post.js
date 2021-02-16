@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 //post
-export async function addChosenPost(post) { //you could change the name of the func if you want
+export async function AddChosenPost(post) { //you could change the name of the func if you want
     await axios.post('http://localhost:3000/addChosenPost', post).then(
         res => {
             console.log(JSON.stringify(res.data));
@@ -12,7 +12,7 @@ export async function addChosenPost(post) { //you could change the name of the f
     )
 }
 //post
-export async function getUsersChosenPosts(post) {
+export async function GetUsersChosenPosts(post) {
     await axios.get(`http://localhost:3000/getUsersChosenPosts/${post.id}`).then(
         res => {
             res.status(200).send('Your chosen posts are: ' + res.data)

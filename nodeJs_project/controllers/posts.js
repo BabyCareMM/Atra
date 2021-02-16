@@ -4,6 +4,7 @@ const User = require('../models/user')
 //gets all the posts the user chose
 const getUsersChosenPosts = async (req, res) => {
     try {
+        //check if it returns posts or user with posts
         const posts = await User.findById(req.params.id).populate('Posts')
         res.status(200).json(posts)
     }

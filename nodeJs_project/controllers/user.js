@@ -16,12 +16,15 @@ const createAccount = async (req, res) => {
     const newUser = new User(req.body);
     try {
         await newUser.save();
-        res.status(200).json(newUser)//should it return the whole user or only the name and email?
+        res.status(200).json(newUser)
         console.log('user created: ' + newUser)
     }
     catch (error) {
         res.status(400).send(error.message)
     }
 }
+const hello = async (req, res) => {
+    res.status(200).send("hello")
+}
 
-module.exports = { login, createAccount }
+module.exports = { login, createAccount, hello }
