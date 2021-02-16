@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const api = require('./routes/api');
+const cors = require('cors')
 
 dotenv.config();
 app.use(bodyParser.json());
@@ -21,6 +22,12 @@ mongoose.connect(process.env.DB_CONNECT, connectionParams)
         console.log(`error connecting ${err}`);
     })
 
+let corsOptions = {
+    origin: 'http://localhost:3001',
+    optionsSuccessStatus: 200 // For legacy browser support
+}
+app.use(cors(corsOptions));
+//
 app.use('/', api);
 app.listen(3000, () => console.log("app is listening to port 3000"));
 

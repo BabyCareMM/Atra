@@ -40,8 +40,8 @@ export async function CreateAccount(user) {
     )
 }
 
-export async function hello() {
-    await axios.get('http://localhost:3000/hello').then(
+export  function hello() {
+     axios.get('http://localhost:3000/hello').then(
         res => {
             alert('respond from hello service' + JSON.stringify(res))
         },
