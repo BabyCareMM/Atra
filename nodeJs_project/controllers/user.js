@@ -27,4 +27,27 @@ const hello = async (req, res) => {
     res.status(200).send("hello")
 }
 
-module.exports = { login, createAccount, hello }
+//for programmers use
+const allUsers = async (req,res)=>{
+    try{
+        const users = await User.find()
+        res.status(200).json( users)
+        console.log('users: ' + user)
+
+
+    }
+    catch(error){
+        res.send(error.message)
+    }
+}
+
+module.exports = { login, createAccount,allUsers, hello }
+
+// user:{
+// "chosenPosts": [],
+// "_id": "602c12d3b815881bb036ada7",
+// "name": "Malka",
+// "email": "malka@gmail.com",
+// "password": "123456",
+// "__v": 0
+// }
