@@ -3,17 +3,17 @@ import './App.css';
 import CreateAccount from './component/CreateAccount';
 import Login from './component/Login';
 import store from './store/store';
-
-
-// import { post } from './services/post'
-import { CreateAccount as CreateAccountF, hello, Login as LoginF } from './services/user'
+import { fetchPosts } from './services/post';
+import Post from './component/Posts';
 import { useEffect } from 'react';
+
 function App() {
   return (<>
     <Provider store={store}>
       <div className="App">
-        <Login />
-        <CreateAccount />
+        {/* <Login />
+        <CreateAccount /> */}
+        <Post />
       </div>
     </Provider>
   </>);
