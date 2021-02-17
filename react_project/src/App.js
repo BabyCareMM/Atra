@@ -10,9 +10,20 @@ import { CreateAccount as CreateAccountF, hello, Login as LoginF } from './servi
 import { useEffect } from 'react';
 function App() {
   return (<>
-    {useEffect(() => {
-      { CreateAccountF({ name: 'Eli', email: 'okfd@gmail.com', password: '567' }) }
-    })}
+  <Provider store={store}>
+      <div className="App">
+      <CreateAccount />
+
+      </div>
+    </Provider>
+    {/* {LoginF()} */}
+{/* {post.addChosenPost({ postId:1, title:'test', body:'test', date:Date.now(),users:0 })} */ }
+{/* <Login />
+      
+
+    {/* {useEffect(() => {
+      { CreateAccountF({ name: 'Yehuda', email: 'yehuda@gmail.com', password: '0293' }) }
+    })} */}
   </>);
 }
 
@@ -22,11 +33,3 @@ export default App;
 
 {/* {LoginF()} */ }
 
-{/* <Provider store={store}>
-      <div className="App">
-    {/* {LoginF()} */}
-{/* {post.addChosenPost({ postId:1, title:'test', body:'test', date:Date.now(),users:0 })} */ }
-{/* <Login />
-        <CreateAccount />
-      </div>
-    </Provider> */}

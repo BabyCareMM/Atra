@@ -12,6 +12,5 @@ router.get('/allUsers', user.allUsers)//for programmers use
 router.get('/getUsersChosenPosts/:id', posts.getUsersChosenPosts)
 router.post('addChosenPost', posts.addChosenPost)
 
-router.get('/hello', user.hello)
 module.exports = router;
 

@@ -16,18 +16,13 @@ const createAccount = async (req, res) => {
     const newUser = new User(req.body);
     try {
         await newUser.save();
-        // res.status(200).json(newUser)
-        res.status(200).json('newUser')
-        // console.log('user created: ' + newUser)
-        console.log('user created: ' + 'newUser')
+        res.status(200).json(newUser)
+        console.log('user created: ' + newUser)
     }
     catch (error) {
         alert('this is an error alert from the createAccount of the controler')
         res.status(400).send(error.message)
     }
-}
-const hello = async (req, res) => {
-    res.status(200).send("hello")
 }
 
 //for programmers use
@@ -44,7 +39,7 @@ const allUsers = async (req, res) => {
     }
 }
 
-module.exports = { login, createAccount, allUsers, hello }
+module.exports = { login, createAccount, allUsers }
 
 // user:{
 // "chosenPosts": [],
