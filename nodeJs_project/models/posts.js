@@ -5,11 +5,11 @@ const postSchema = mongoose.Schema({
         type: String,
         default: true
     },
-    title:{
+    title: {
         type: String,
         default: true
     },
-    body:{
+    body: {
         type: String,
         default: true
     },
@@ -17,10 +17,12 @@ const postSchema = mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    users: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Users'
-    }]
+    users: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Users'
+        }
+    ]
 })
 
-module.exports = mongoose.model('Posts',postSchema)
+module.exports = mongoose.model('Posts', postSchema)

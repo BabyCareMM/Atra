@@ -24,24 +24,18 @@ export async function Login() {
 }
 //user
 export async function CreateAccount(user) {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('');
-    await axios.post('http://localhost:3000/createAccount', { 'name': 'testName', 'email': 'lemindy43@gmail.com', 'password': '123' }).then(
-        res => {
-            console.log('create works')
-            // console.log(JSON.stringify(res.data))
-            // setName(user.name);
-            // setEmail(user.email);
-            // <Redirect to={{ pathname: '/post', state: { flash: 'created account successfully!' } }} />
-        },
-        err => {
-            console.log('error in createAccount services')
-        }
-    )
+    await axios.post('http://localhost:3000/createAccount', user)
+        .then((res) => {
+            alert('create works');
+            alert('creatAccount res ' + JSON.stringify(res.data));
+            // < Redirect to={{ pathname: '/post', state: { flash: 'created account successfully!' } }} />
+        })
+        .catch((err) => {
+            alert('err in createAccount')
+        })
 }
-
-export  function hello() {
-     axios.get('http://localhost:3000/hello').then(
+export function hello() {
+    axios.get('http://localhost:3000/hello').then(
         res => {
             alert('respond from hello service' + JSON.stringify(res))
         },
