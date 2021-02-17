@@ -3,16 +3,13 @@ import { useState } from 'react';
 import { Redirect } from 'react-router';
 
 //user
-export async function Login() {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('');
-    // await axios.get(`http://localhost:3000/login/${user.email}/${user.password}`).then(
-    await axios.get("http://localhost:3000/login/'lemindy43@gmail.com/'333333'").then(
+export async function Login(user) {
+    // const [data, setData] = useState('');
+    await axios.get(`http://localhost:3000/login/${user.email}/${user.password}`).then(
         res => {
             if (res) {
-                setName(res.name);
-                setEmail(res.email);
-                <Redirect to={{ pathname: '/post', state: { flash: 'logged in succeded!' } }} />
+                alert('Login res ' + JSON.stringify(res.data));
+                // <Redirect to={{ pathname: '/post', state: { flash: 'logged in succeded!' } }} />
             }
             else {
                 res.status(500).send("User does not exist!");
@@ -33,4 +30,3 @@ export async function CreateAccount(user) {
             alert('err in createAccount')
         })
 }
-

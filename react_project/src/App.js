@@ -10,20 +10,12 @@ import { CreateAccount as CreateAccountF, hello, Login as LoginF } from './servi
 import { useEffect } from 'react';
 function App() {
   return (<>
-  <Provider store={store}>
+    <Provider store={store}>
       <div className="App">
-      <CreateAccount />
-
+        <Login />
+        <CreateAccount />
       </div>
     </Provider>
-    {/* {LoginF()} */}
-{/* {post.addChosenPost({ postId:1, title:'test', body:'test', date:Date.now(),users:0 })} */ }
-{/* <Login />
-      
-
-    {/* {useEffect(() => {
-      { CreateAccountF({ name: 'Yehuda', email: 'yehuda@gmail.com', password: '0293' }) }
-    })} */}
   </>);
 }
 
