@@ -20,7 +20,6 @@ const createAccount = async (req, res) => {
         console.log('user created: ' + newUser)
     }
     catch (error) {
-        alert('this is an error alert from the createAccount of the controler')
         res.status(400).send(error.message)
     }
 }

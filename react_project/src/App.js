@@ -8,12 +8,14 @@ import store from './store/store';
 // import { post } from './services/post'
 import { CreateAccount as CreateAccountF, hello, Login as LoginF } from './services/user'
 import { useEffect } from 'react';
+import PostHistory from './component/PostHistory';
 function App() {
   return (<>
     <Provider store={store}>
       <div className="App">
         <Login />
         <CreateAccount />
+        {/* <PostHistory/> */}
       </div>
     </Provider>
   </>);

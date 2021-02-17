@@ -14,23 +14,27 @@
 }
 
 .App-link {
-  color: #61dafb;
+  /* color: #61dafb; */
+  color: #e78f09;
 }
 
 
 /* BASIC */
 
 html {
-  background-color: #56baed;
+  background-color: #e78f09;
+  /* background-color: #56baed; */
 }
 
 body {
+  background-image: url("orange_background.png");
   font-family: "Poppins", sans-serif;
   height: 100vh;
 }
 
 a {
-  color: #92badd;
+  /* color: #92badd; */
+  color: #e78f09;
   display:inline-block;
   text-decoration: none;
   font-weight: 400;
@@ -93,7 +97,9 @@ h2.inactive {
 
 h2.active {
   color: #0d0d0d;
-  border-bottom: 2px solid #5fbae9;
+  /* border-bottom: 2px solid #5fbae9; */
+  border-bottom:#e78f09;
+  ;
 }
 
 
@@ -101,7 +107,8 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #56baed;
+  /* background-color: #56baed; */
+  background-color: #e78f09;
   border: none;
   color: white;
   padding: 15px 80px;

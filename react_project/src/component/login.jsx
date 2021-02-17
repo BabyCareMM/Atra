@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import { Login as LoginService } from '../services/user';
+import {actions} from '../store/actions'
 
 const mapStateToProps = (state) => {
   return { ...state, user: state.userReducer.user || [] }
 }
+
+const mapDispatchToProps = (dispatch) =>({
+    setUser : (loggedUser) => dispatch(actions.setUser(loggedUser))
+})
+
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -21,9 +27,9 @@ function Login() {
         {/* // <!-- Tabs Titles --> */}
 
         {/* // <!-- Icon --> */}
-        <div class="fadeIn first">
+        {/* <div class="fadeIn first">
           <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
-        </div>
+        </div> */}
 
         {/* // <!-- Login Form --> */}
         <form>
@@ -45,5 +51,5 @@ function Login() {
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Login);
