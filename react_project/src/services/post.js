@@ -25,42 +25,36 @@ import PostHistory from '../component/PostHistory';
 //         })
 // }
 
-export function Parent() {
+// export function Parent() {
 
-    const user = {
-        _id: "602bf8e1d2f6343c4004092f",
-        name: "Minds",
-        email: "lemindy43@gmail.com",
-        password: "333333"
-    }
-    const [posts, setPosts] = useState([]);
-    useEffect(() => {
-        GetUsersChosenPosts(user);
-    }, []);
+    // const user = {
+    //     _id: "602bf8e1d2f6343c4004092f",
+    //     name: "Minds",
+    //     email: "lemindy43@gmail.com",
+    //     password: "333333"
+    // }
+    // const [posts, setPosts] = useState([]);
+//     useEffect(() => {
+//         GetUsersChosenPosts(user);
+//     }, []);
 
-    const GetUsersChosenPosts = (user) => {
-        axios.get(`http://localhost:3000/getUsersChosenPosts/${user.id}`).then(res => {
-            const myPosts = JSON.stringify(res.data);
-            setPosts(myPosts)
-            alert('creatAccount res ' + posts);
-        })
-            .catch((err) => {
-                alert('sorry an error occurred please try again later')
-            })
-    }
+//     const GetUsersChosenPosts = (user) => {
+//         axios.get(`http://localhost:3000/getUsersChosenPosts/${user.id}`).then(res => {
+//             const myPosts = JSON.stringify(res.data);
+//             setPosts(myPosts)
+//             alert('creatAccount res ' + posts);
+//         })
+//             .catch((err) => {
+//                 alert('sorry an error occurred please try again later')
+//             })
+//     }
 
-    return (<PostHistory myPostsList={posts} />);
-}
+//     return (<PostHistory myPostsList={posts} />);
+// }
 //post
-export async function GetUsersChosenPosts(post) {
-    await axios.get(`http://localhost:3000/getUsersChosenPosts/${post.id}`).then(
-        res => {
-            res.status(200).send('Your chosen posts are: ' + res.data)
-        },
-        err => {
-            console.log('err')
-            // res.status(400).send('sorry an error occurred please try again later' + err)
-        })
+export function GetUsersChosenPosts(user) {
+    const id =user._id;
+    return axios.get(`http://localhost:3000/getUsersChosenPosts/${id}`);
 }
 //get
 export function FetchPosts() {

@@ -6,13 +6,15 @@ import store from './store/store';
 import { fetchPosts } from './services/post';
 import Post from './component/Posts';
 import { useEffect } from 'react';
+import PostHistory from './component/PostHistory';
 function App() {
   return (<>
     <Provider store={store}>
       <div className="App">
         {/* <Login />
         <CreateAccount /> */}
-        <Post />
+        {/* <Post /> */}
+        <PostHistory/>
       </div>
     </Provider>
   </>);
