@@ -30,7 +30,7 @@ import { FetchPosts } from '../services/post';
 export default function Posts() {
     const [posts, setPosts] = useState([]);
     function clickme() {
-        FetchPosts.then(res => {
+        FetchPosts().then(res => {
             setPosts(res.data);
         });
     }

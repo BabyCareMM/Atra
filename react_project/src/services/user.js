@@ -24,7 +24,7 @@ export async function CreateAccount(user) {
     await axios.post('http://localhost:3000/createAccount', user).then(res => {
             alert('create works');
             alert('creatAccount res ' + JSON.stringify(res.data));
-            < Redirect to={{ pathname: '/post', state: { flash: 'created account successfully!' } }} />
+            // < Redirect to={{ pathname: '/post', state: { flash: 'created account successfully!' } }} />
         })
         .catch((err) => {
             alert('err in createAccount')

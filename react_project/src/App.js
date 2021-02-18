@@ -6,7 +6,6 @@ import store from './store/store';
 import { fetchPosts } from './services/post';
 import Post from './component/Posts';
 import { useEffect } from 'react';
-
 function App() {
   return (<>
     <Provider store={store}>

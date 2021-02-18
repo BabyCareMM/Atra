@@ -9,8 +9,8 @@ router.post('/createAccount', user.createAccount)
 router.get('/allUsers', user.allUsers)//for programmers use
 
 //posts
-router.get('/getUsersChosenPosts/:id', posts.getUsersChosenPosts)
-router.post('addChosenPost', posts.addChosenPost)
+router.get('/getUsersChosenPosts/:id', posts.getUsersChosenPosts)//gets the user that requested;
+router.post('/addChosenPost', posts.addChosenPost)
 
 module.exports = router;
 
