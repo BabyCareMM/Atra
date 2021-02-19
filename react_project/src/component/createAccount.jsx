@@ -18,22 +18,20 @@ const CreateAccount = withRouter(function CreateAccount(props) {
   const [nameI, setName] = useState('');
   const [emailI, setEmail] = useState('');
   const [passwordI, setPassword] = useState('');
-  const [isRes, setIsRes] = useState('true');
 
-  function createAccountHandler() {
+  function createAccountHandler(e) {
+    e.preventDefault();
     createAccountService({ name: nameI, email: emailI, password: passwordI })
       .then(res => {
         props.setUser({ name: res.data.name, id: res.data._id });
-        alert('creatAccount res ' + res.data.name + "id  " + res.data._id);
+        history.push('/posts')
       })
       .catch((err) => {
-        setIsRes('false')
         alert('err in createAccount' + err)
       })
     setName('')
     setEmail('')
     setPassword('')
-    if (isRes === 'true') history.push('/posts')
   }
 
   return (<>
@@ -43,7 +41,7 @@ const CreateAccount = withRouter(function CreateAccount(props) {
           <input type="text" id="name" class="fadeIn first" name="name" placeholder="name" onChange={e => setName(e.target.value)} />
           <input type="text" id="email" class="fadeIn second" name="email" placeholder="email" onChange={e => setEmail(e.target.value)} />
           <input type="text" id="password" class="fadeIn third" name="createAccount" placeholder="password" onChange={e => setPassword(e.target.value)} />
-          <input onClick={createAccountHandler} type="submit" class="fadeIn fourth" value="Create Account" />
+          <input onClick={(e) => createAccountHandler(e)} type="submit" class="fadeIn fourth" value="Create Account" />
         </form>
 
       </div>

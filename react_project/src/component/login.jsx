@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 import { Login as LoginService } from '../services/user';
 import { actions } from '../store/actions'
 
@@ -12,14 +13,20 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-function Login(props) {
+const Login = withRouter(function Login(props) {
+  const { history } = props;
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  function submitHandler() {
+  function createHandler() {
+    history.push('/createAccount')
+  }
+  function submitHandler(e) {
+    e.preventDefault();
     LoginService({ email: email, password: password })
-      .then(res => {
+      .then((res) => {
         props.setUser({ name: res.data.name, id: res.data._id })
+        history.push('/posts')
       }).catch(error => {
         alert(error)
       })
@@ -39,19 +46,19 @@ function Login(props) {
         <form>
           <input onChange={(e) => setEmail(e.target.value)} type="text" id="login" class="fadeIn second" name="login" placeholder="email" />
           <input onChange={(e) => setPassword(e.target.value)} type="text" id="password" class="fadeIn third" name="login" placeholder="password" />
-          <input onClick={submitHandler} type="submit" class="fadeIn fourth" value="Log In" />
+          <input onClick={(e) => submitHandler(e)} type="submit" class="fadeIn fourth" value="Log In" />
         </form>
 
         {/* // <!-- Remind Passowrd --> */}
         <div id="formFooter">
-          <a class="underlineHover" href="#">Forgot Password?</a>
+          <a onClick={createHandler} class="underlineHover" href="#">Don't have an account yet? create one✔</a>
         </div>
 
       </div>
     </div>
   </>)
 
-}
+})
 
 export default connect(
   mapStateToProps,
