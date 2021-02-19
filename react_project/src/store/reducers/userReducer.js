@@ -4,13 +4,14 @@ import createReducer from './reducer_utills';
 const initialState = {
     user: {
         name: '',
-        emailAddress: ''
+        id: ''
     }
 }
 const user = {
     setUser(state, action) {
         state.user.name = action.payload.name;
-        state.user.emailAdress = action.payload.emailAdress;
+        state.user.id = action.payload.id;
+        alert("name:  " + state.user.name + "  id:  " + state.user.id)
     }
 }
 export default produce((state, action) => createReducer(state, action, user), initialState);

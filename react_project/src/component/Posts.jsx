@@ -26,13 +26,22 @@
 // }
 import { useState } from 'react';
 import { FetchPosts } from '../services/post';
+import { AddChosenPost } from '../services/post';
 
 export default function Posts() {
+
     const [posts, setPosts] = useState([]);
     function clickme() {
         FetchPosts().then(res => {
             setPosts(res.data);
         });
+    }
+    function addPostHandler(e) {
+        AddChosenPost({
+            id: e.id,
+            title: e.title,
+            body: e.body,
+        })
     }
     return (<>
         <button onClick={clickme}>Click me</button>
@@ -41,6 +50,7 @@ export default function Posts() {
                 <div className="card-body">
                     <h6 className="title">{post.title}</h6>
                     <p className="card-text">{post.body}</p>
+                    <button key={post.id} onClick={(e) => addPostHandler(e)} style={{ 'width': 'fitContent', 'textAlign': 'center' }} onClick={(e) => addPostHandler(post)} type="submit" class="fadeIn fourth">add post to favorits</button>
                 </div>
             </div>
         ))}

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import PostHistory from '../component/PostHistory';
 
 //post
+<<<<<<< HEAD
 // export async function AddChosenPost(post) { //you could change the name of the func if you want
 //     await axios.post('http://localhost:3000/addChosenPost', post).then(
 //         res => {
@@ -12,17 +13,43 @@ import PostHistory from '../component/PostHistory';
 //             res.status(400).send('sorry an error occurred please try again later' + err)
 //         }
 //     )
+=======
+export async function AddChosenPost(post) { //you could change the name of the func if you want
+    await axios.post('http://localhost:3000/addChosenPost', post).then(
+        res => {
+            // console.log(JSON.stringify(res.data));
+            alert('the post that i added' + JSON.stringify(res.data))
+        }
+
+    ).catch(err => {
+        alert('err in the addChosen server')
+    })
+}
+//post
+// export const myPosts=[];
+// export async function GetUsersChosenPosts(user) {
+//     await axios.get(`http://localhost:3000/getUsersChosenPosts/${user.id}`).then( res => {
+//             myPosts = JSON.stringify(res.data);
+//             alert('creatAccount res ' + myPosts);
+//         })
+//         .catch((err) => {
+//             alert('sorry an error occurred please try again later')
+//         })
+>>>>>>> 3dcc9a65f593808e2919b1b1bbd7bbf8c73c6989
 // }
 
 
 
-    // const user = {
-    //     _id: "602bf8e1d2f6343c4004092f",
-    //     name: "Minds",
-    //     email: "lemindy43@gmail.com",
-    //     password: "333333"
-    // }
-    // const [posts, setPosts] = useState([]);
+// const user = {
+//     _id: "602bf8e1d2f6343c4004092f",
+//     name: "Minds",
+//     email: "lemindy43@gmail.com",
+//     password: "333333"
+// }
+// const [posts, setPosts] = useState([]);
+//     useEffect(() => {
+//         GetUsersChosenPosts(user);
+//     }, []);
 
 //get
 export function FetchPosts() {
@@ -31,7 +58,7 @@ export function FetchPosts() {
 
 //post
 export function GetUsersChosenPosts(user) {
-    const id =user._id;
+    const id = user._id;
     return axios.get(`http://localhost:3000/getUsersChosenPosts/${id}`);
 }
 
@@ -39,4 +66,5 @@ export function GetUsersChosenPosts(user) {
 export function removePost(userAndPost){
     return axios.post('http://localhost:3000/removePost',userAndPost);
 }
+
 
