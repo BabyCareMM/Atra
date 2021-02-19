@@ -7,15 +7,15 @@ export async function Login(user) {
     // const [data, setData] = useState('');
     await axios.get(`http://localhost:3000/login/${user.email}/${user.password}`).then(
         res => {
-            if (res) {
-                alert('Login res ' + JSON.stringify(res.data));
-                // <Redirect to={{ pathname: '/post', state: { flash: 'logged in succeded!' } }} />
-            }
-            else {
-                res.status(500).send("User does not exist!");
-            }
-        },
-        err => {
+            alert('Login res ' + JSON.stringify(res.data));
+            // if (res) {
+            //     alert('Login res ' + JSON.stringify(res.data));
+            //     // <Redirect to={{ pathname: '/post', state: { flash: 'logged in succeded!' } }} />
+            // }
+            // else {
+            //     res.status(500).send("User does not exist!");
+            // }
+        }).catch((err) => {
             console.log('err in login services')
         })
 }
