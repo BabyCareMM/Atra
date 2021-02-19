@@ -11,6 +11,7 @@ router.get('/allUsers', user.allUsers)//for programmers use
 //posts
 router.get('/getUsersChosenPosts/:id', posts.getUsersChosenPosts)//gets the user that requested;
 router.post('/addChosenPost', posts.addChosenPost)
+router.post('/removePost', posts.removePost)//gets the userId and the PostId in the req.body
 
 module.exports = router;
 

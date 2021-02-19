@@ -1,5 +1,6 @@
 const Posts = require('../models/posts')
 const User = require('../models/user')
+const alert = require('alert')
 
 //gets all the posts the user chose
 const getUsersChosenPosts = async (req, res) => {
@@ -38,5 +39,28 @@ const addChosenPost = async (req, res) => {
 //     "__v": 0
 // }
 
+//gets the userId and the PostId in the req.body
+const removePost = async (req,res) =>{
+    try{
+        const user = await User.findById(req.body.user_id)
+        await user.chosenPosts.remove(req.body._id)//_id meaning post_id
+        await user.save()
+        console.log("post removed" + req.body._id + 'user: '+ user )
+        const post = await Posts.findById(req.body._id)
+        await post.users.remove(req.body.user_id)
+        post.save()
+        console.log("user removed" + req.body.user_id + 'post: '+ post)
+        
+        // res.status(200).json({user: user , post:post})
+        res.status(200).json(user)
 
-module.exports = { getUsersChosenPosts, addChosenPost }
+
+
+    }
+    catch(error){
+        res.status(400).send('error in the removePost controller')
+    }
+}
+
+
+module.exports = { getUsersChosenPosts, addChosenPost ,removePost }

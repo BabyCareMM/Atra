@@ -3,6 +3,17 @@ import { useEffect, useState } from 'react';
 import PostHistory from '../component/PostHistory';
 
 //post
+<<<<<<< HEAD
+// export async function AddChosenPost(post) { //you could change the name of the func if you want
+//     await axios.post('http://localhost:3000/addChosenPost', post).then(
+//         res => {
+//             console.log(JSON.stringify(res.data));
+//         },
+//         err => {
+//             res.status(400).send('sorry an error occurred please try again later' + err)
+//         }
+//     )
+=======
 export async function AddChosenPost(post) { //you could change the name of the func if you want
     await axios.post('http://localhost:3000/addChosenPost', post).then(
         res => {
@@ -24,9 +35,10 @@ export async function AddChosenPost(post) { //you could change the name of the f
 //         .catch((err) => {
 //             alert('sorry an error occurred please try again later')
 //         })
+>>>>>>> 3dcc9a65f593808e2919b1b1bbd7bbf8c73c6989
 // }
 
-// export function Parent() {
+
 
 // const user = {
 //     _id: "602bf8e1d2f6343c4004092f",
@@ -39,39 +51,20 @@ export async function AddChosenPost(post) { //you could change the name of the f
 //         GetUsersChosenPosts(user);
 //     }, []);
 
-//     const GetUsersChosenPosts = (user) => {
-//         axios.get(`http://localhost:3000/getUsersChosenPosts/${user.id}`).then(res => {
-//             const myPosts = JSON.stringify(res.data);
-//             setPosts(myPosts)
-//             alert('creatAccount res ' + posts);
-//         })
-//             .catch((err) => {
-//                 alert('sorry an error occurred please try again later')
-//             })
-//     }
+//get
+export function FetchPosts() {
+    return axios.get('http://jsonplaceholder.typicode.com/posts');
+}
 
-//     return (<PostHistory myPostsList={posts} />);
-// }
 //post
 export function GetUsersChosenPosts(user) {
     const id = user._id;
     return axios.get(`http://localhost:3000/getUsersChosenPosts/${id}`);
 }
-//get
-export function FetchPosts() {
-    return axios.get('https://jsonplaceholder.typicode.com/posts');
+
+//post
+export function removePost(userAndPost){
+    return axios.post('http://localhost:3000/removePost',userAndPost);
 }
-// export let fetchPosts = [];
-// export async function FetchPosts() {
-//     await axios.get('https://jsonplaceholder.typicode.com/posts').then(
-//         res => {
-//             alert(JSON.stringify(res.data))
-//             fetchPosts = JSON.stringify(res.data);
-//             alert(fetchPosts)
-//         }
-//     ).catch(err => {
-//         alert('err');
-//     })
-// }
 
 
