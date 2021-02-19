@@ -3,16 +3,17 @@ import { useEffect, useState } from 'react';
 import PostHistory from '../component/PostHistory';
 
 //post
-// export async function AddChosenPost(post) { //you could change the name of the func if you want
-//     await axios.post('http://localhost:3000/addChosenPost', post).then(
-//         res => {
-//             console.log(JSON.stringify(res.data));
-//         },
-//         err => {
-//             res.status(400).send('sorry an error occurred please try again later' + err)
-//         }
-//     )
-// }
+export async function AddChosenPost(post) { //you could change the name of the func if you want
+    await axios.post('http://localhost:3000/addChosenPost', post).then(
+        res => {
+            // console.log(JSON.stringify(res.data));
+            alert('the post that i added' + JSON.stringify(res.data))
+        }
+
+    ).catch(err => {
+        alert('err in the addChosen server')
+    })
+}
 //post
 // export const myPosts=[];
 // export async function GetUsersChosenPosts(user) {
@@ -27,13 +28,13 @@ import PostHistory from '../component/PostHistory';
 
 // export function Parent() {
 
-    // const user = {
-    //     _id: "602bf8e1d2f6343c4004092f",
-    //     name: "Minds",
-    //     email: "lemindy43@gmail.com",
-    //     password: "333333"
-    // }
-    // const [posts, setPosts] = useState([]);
+// const user = {
+//     _id: "602bf8e1d2f6343c4004092f",
+//     name: "Minds",
+//     email: "lemindy43@gmail.com",
+//     password: "333333"
+// }
+// const [posts, setPosts] = useState([]);
 //     useEffect(() => {
 //         GetUsersChosenPosts(user);
 //     }, []);
@@ -53,7 +54,7 @@ import PostHistory from '../component/PostHistory';
 // }
 //post
 export function GetUsersChosenPosts(user) {
-    const id =user._id;
+    const id = user._id;
     return axios.get(`http://localhost:3000/getUsersChosenPosts/${id}`);
 }
 //get
@@ -72,4 +73,5 @@ export function FetchPosts() {
 //         alert('err');
 //     })
 // }
+
 

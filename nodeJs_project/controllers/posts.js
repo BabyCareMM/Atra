@@ -18,13 +18,13 @@ const addChosenPost = async (req, res) => {
     const post = new Posts(req.body);
     try {
         await post.save()
-        const user = await User.findByIdAndUpdate(req.body.users,{$push:{chosenPosts:post}},{new:true})
+        const user = await User.findByIdAndUpdate(req.body.users, { $push: { chosenPosts: post } }, { new: true })
         // user.chosenPosts.push(post)
         await user.save()
         res.status(200).json(post)
     }
     catch (error) {
-        res.status(400).send('error in the controller')
+        res.status(400).send('error in the controller' + error)
     }
 }//"_id": "602d590d9d321434305a57ef"this is the first post Id 
 // {

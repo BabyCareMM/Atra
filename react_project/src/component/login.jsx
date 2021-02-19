@@ -1,24 +1,28 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import { Login as LoginService } from '../services/user';
-import {actions} from '../store/actions'
+import { actions } from '../store/actions'
 
 const mapStateToProps = (state) => {
   return { ...state, user: state.userReducer.user || [] }
 }
 
-const mapDispatchToProps = (dispatch) =>({
-    setUser : (loggedUser) => dispatch(actions.setUser(loggedUser))
+const mapDispatchToProps = (dispatch) => ({
+  setUser: (loggedUser) => dispatch(actions.setUser(loggedUser))
 })
 
 
-function Login() {
+function Login(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   function submitHandler() {
     LoginService({ email: email, password: password })
-    setEmail('');
-    setPassword('');
+      .then(res => {
+        props.setUser({ name: res.data.name, id: res.data._id })
+      }).catch(error => {
+        alert(error)
+      })
   }
 
   return (<>

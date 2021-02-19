@@ -1,11 +1,18 @@
 const User = require('../models/user')
+let alert = require('alert');
 
 const login = async (req, res) => {
     try {
         const paramaters = req.params
         const user = await User.findOne({ email: paramaters.email, password: paramaters.password })
-        res.status(200).json(user)
-        console.log('user: ' + user)
+        // alert('hi from the server' + user)
+        if (user) {
+            res.status(200).json(user)
+            console.log('user: ' + user)
+        }
+        else {
+            alert('user not found')
+        }
     }
     catch (error) {
         res.status(400).send(error.message)
