@@ -29,11 +29,11 @@ export default function PostHistory() {
         {post.map((chosenPosts, index) => (
             <div key={chosenPosts._id} className="card" style={{ 'width': '16rem', 'display': 'inline-block', 'margin': '5px' }}>
                 <div className="card-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h5 className="title">{chosenPosts.title}</h5>
                     <p className="card-text">{chosenPosts.body}</p>
                     <p className="card-text">Added to collection on : {chosenPosts.date}</p>
                     <button type="button" className="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#centralModal" >Edit</button>
-                    <button type="button" className="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#centralModal" >Delete</button>
     
                 </div>
             </div>
