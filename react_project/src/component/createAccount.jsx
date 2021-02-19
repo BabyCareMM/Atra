@@ -33,7 +33,9 @@ const CreateAccount = withRouter(function CreateAccount(props) {
     setEmail('')
     setPassword('')
   }
-
+  function redirectHandler() {
+    history.push('/login');
+  }
   return (<>
     <div className="wrapper fadeInDown">
       <div id="formContent">
@@ -43,7 +45,9 @@ const CreateAccount = withRouter(function CreateAccount(props) {
           <input type="text" id="password" class="fadeIn third" name="createAccount" placeholder="password" onChange={e => setPassword(e.target.value)} />
           <input onClick={(e) => createAccountHandler(e)} type="submit" class="fadeIn fourth" value="Create Account" />
         </form>
-
+        <div id="formFooter">
+          <a onClick={redirectHandler} class="underlineHover" href="#">Back to login</a>
+        </div>
       </div>
     </div>
   </>)

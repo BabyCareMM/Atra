@@ -9,7 +9,8 @@ export default function RouterPage() {
     return (<>
         <Router >
             <Switch>
-                <Route path='/login'><Login /></Route>
+                <Route exact path='/'><Login /></Route>
+                <Route exact path='/login'><Login /></Route>
                 <Route exact path='/createAccount'><CreateAccount /></Route>
                 <Route exact path='/postHistory'><PostHistory /></Route>
                 <Route exact path='/posts'><Posts /></Route>

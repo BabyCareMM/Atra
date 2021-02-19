@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import PostHistory from '../component/PostHistory';
 
 //post
-<<<<<<< HEAD
 // export async function AddChosenPost(post) { //you could change the name of the func if you want
 //     await axios.post('http://localhost:3000/addChosenPost', post).then(
 //         res => {
@@ -13,16 +12,14 @@ import PostHistory from '../component/PostHistory';
 //             res.status(400).send('sorry an error occurred please try again later' + err)
 //         }
 //     )
-=======
 export async function AddChosenPost(post) { //you could change the name of the func if you want
     await axios.post('http://localhost:3000/addChosenPost', post).then(
         res => {
             // console.log(JSON.stringify(res.data));
             alert('the post that i added' + JSON.stringify(res.data))
         }
-
     ).catch(err => {
-        alert('err in the addChosen server')
+        alert('err in the addChosen service' + err)
     })
 }
 //post
@@ -35,7 +32,6 @@ export async function AddChosenPost(post) { //you could change the name of the f
 //         .catch((err) => {
 //             alert('sorry an error occurred please try again later')
 //         })
->>>>>>> 3dcc9a65f593808e2919b1b1bbd7bbf8c73c6989
 // }
 
 
@@ -63,8 +59,8 @@ export function GetUsersChosenPosts(user) {
 }
 
 //post
-export function removePost(userAndPost){
-    return axios.post('http://localhost:3000/removePost',userAndPost);
+export function removePost(userAndPost) {
+    return axios.post('http://localhost:3000/removePost', userAndPost);
 }
 
 

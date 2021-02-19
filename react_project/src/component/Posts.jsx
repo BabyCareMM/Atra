@@ -27,9 +27,14 @@
 import { useState } from 'react';
 import { FetchPosts } from '../services/post';
 import { AddChosenPost } from '../services/post';
+import { connect } from "react-redux";
+import { withRouter } from 'react-router';
 
-export default function Posts() {
-
+const mapStateToProps = (state) => {
+    return { ...state, user: state.userReducer.user || [] }
+}
+const Posts = withRouter(function Posts(props) {
+    const { history } = props;
     const [posts, setPosts] = useState([]);
     function clickme() {
         FetchPosts().then(res => {
@@ -37,12 +42,16 @@ export default function Posts() {
         });
     }
     function addPostHandler(e) {
-        AddChosenPost({
-            id: e.id,
+        const post = {
+            post_id: e.id,
             title: e.title,
             body: e.body,
-        })
+            users: props.user.id
+        }
+        AddChosenPost(post);
+        history.push('/postHistory');
     }
+
     return (<>
         <button onClick={clickme}>Click me</button>
         {posts.map((post, index) => (
@@ -50,9 +59,13 @@ export default function Posts() {
                 <div className="card-body">
                     <h6 className="title">{post.title}</h6>
                     <p className="card-text">{post.body}</p>
-                    <button key={post.id} onClick={(e) => addPostHandler(e)} style={{ 'width': 'fitContent', 'textAlign': 'center' }} onClick={(e) => addPostHandler(post)} type="submit" class="fadeIn fourth">add post to favorits</button>
+                    <button key={post.id} onClick={(e) => addPostHandler(post)} style={{ 'width': 'fitContent', 'textAlign': 'center' }} onClick={(e) => addPostHandler(post)} type="submit" class="fadeIn fourth">add post to favorits</button>
                 </div>
             </div>
         ))}
     </>)
-}
+})
+export default connect(
+    mapStateToProps,
+    null
+)(Posts);
