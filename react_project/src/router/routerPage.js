@@ -4,10 +4,12 @@ import Login from '../component/Login';
 import CreateAccount from '../component/CreateAccount';
 import PostHistory from '../component/PostHistory';
 import Posts from '../component/Posts';
+import LogOut from '../component/LogOut';
 
 export default function RouterPage() {
     return (<>
         <Router >
+            <LogOut/>
             <Switch>
                 <Route exact path='/'><Login /></Route>
                 <Route exact path='/login'><Login /></Route>

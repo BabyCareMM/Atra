@@ -29,10 +29,14 @@ import { FetchPosts } from '../services/post';
 import { AddChosenPost } from '../services/post';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router';
+import { actions } from '../store/actions';
 
 const mapStateToProps = (state) => {
     return { ...state, user: state.userReducer.user || [] }
 }
+const mapDispatchToProps = (dispatch) => ({
+    setUser: (loggedUser) => dispatch(actions.setUser(loggedUser))
+})
 const Posts = withRouter(function Posts(props) {
     const { history } = props;
     const [posts, setPosts] = useState([]);
@@ -40,6 +44,7 @@ const Posts = withRouter(function Posts(props) {
         FetchPosts().then(res => {
             setPosts(res.data);
         });
+        
     }
     function addPostHandler(e) {
         const post = {
@@ -51,9 +56,14 @@ const Posts = withRouter(function Posts(props) {
         AddChosenPost(post);
         history.push('/postHistory');
     }
-
+    function redirectLoginHandler() {
+        props.setUser({ name: '', id: '' });
+        history.push('/login');
+    }
     return (<>
-        <button onClick={clickme}>Click me</button>
+        <input onClick={(e) => redirectLoginHandler(e)} type="submit" class="fadeIn fourth" value="Logout" />
+        <input type="submit" class="fadeIn fourth"  onClick={clickme} value='Click here to see Posts'/>
+
         {posts.map((post, index) => (
             <div key={post.id} className="card" style={{ 'width': '16rem', 'display': 'inline-block', 'margin': '5px' }}>
                 <div className="card-body">
@@ -67,5 +77,5 @@ const Posts = withRouter(function Posts(props) {
 })
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
 )(Posts);

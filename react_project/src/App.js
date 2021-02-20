@@ -8,6 +8,7 @@ import Post from './component/Posts';
 import { useEffect } from 'react';
 import PostHistory from './component/PostHistory';
 import RouterPage from './router/routerPage';
+import { LogOut } from './component/LogOut';
 function App() {
   return (<>
     <Provider store={store}>
