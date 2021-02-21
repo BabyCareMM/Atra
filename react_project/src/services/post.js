@@ -16,7 +16,7 @@ export async function AddChosenPost(post) { //you could change the name of the f
     await axios.post('http://localhost:3000/addChosenPost', post).then(
         res => {
             // console.log(JSON.stringify(res.data));
-            alert('the post that i added' + JSON.stringify(res.data))
+            // alert('the post that i added' + JSON.stringify(res.data))
         }
     ).catch(err => {
         alert('err in the addChosen service' + err)

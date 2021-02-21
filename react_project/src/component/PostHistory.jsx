@@ -25,23 +25,15 @@ const PostHistory = withRouter(function PostHistory(props) {
 
     function viewChosenPost() {
         chosenPostsService({_id:props.user.id}).then(res => {
-            alert(res.data.chosenPosts)
+            // alert(res.data.chosenPosts)
             setPost(res.data.chosenPosts)
-            alert(post);
+            // alert(post);
         })
             .catch((err) => {
                 alert('error in getting my posts' + err)
             })
     }
-    // useEffect(() => {
-    //     chosenPostsService(user).then(res => {
-    //         setPost(res.data.chosenPosts)
-    //     })
-    //         .catch((err) => {
-    //             alert('error in getting my posts' + err)
-    //         })
-    //     return 0
-    // })
+
 
     function removePostHandler(e) {
         const userPost = {
@@ -93,7 +85,7 @@ const PostHistory = withRouter(function PostHistory(props) {
 
         <input onClick={(e) => redirectHandler(e)} type="submit" class="fadeIn fourth" value="Back to posts" />
         <br />
-        <button type="button" className="btn btn-primary waves-effect waves-light"  onClick={viewChosenPost}>Click here to see chosen posts</button>
+        <input  onClick={viewChosenPost} value='Click here to see chosen posts' type="submit" class="fadeIn fourth" />
         {post.map((chosenPosts, index) => (
             <div key={chosenPosts._id} className="card" style={{ 'width': '16rem', 'height': '25rem', 'display': 'inline-block', 'margin': '5px' }}>
                 <div className="card-body">
