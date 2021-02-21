@@ -60,9 +60,13 @@ const Posts = withRouter(function Posts(props) {
         props.setUser({ name: '', id: '' });
         history.push('/login');
     }
+    function redirectChosenPostHandler() {
+        history.push('/postHistory');
+    }
     return (<>
         <input onClick={(e) => redirectLoginHandler(e)} type="submit" class="fadeIn fourth" value="Logout" />
         <input type="submit" class="fadeIn fourth"  onClick={clickme} value='Click here to see Posts'/>
+        <input onClick={(e) => redirectChosenPostHandler(e)} type="submit" class="fadeIn fourth" value="Click here to see chosen posts" />
 
         {posts.map((post, index) => (
             <div key={post.id} className="card" style={{ 'width': '16rem', 'display': 'inline-block', 'margin': '5px' }}>
